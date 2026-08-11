@@ -6,7 +6,7 @@ import { results } from "@/lib/content";
 
 export function ResultsSection() {
   return (
-    <section className="py-24 md:py-32 bg-(--color-bg-raised)">
+    <section className="py-24 md:py-32 bg-(--color-bg)">
       <Container className="flex flex-col gap-16">
         <div className="flex flex-col gap-4">
           <SectionHeading eyebrow={results.eyebrow} headline={results.headline} />

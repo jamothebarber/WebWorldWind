@@ -8,7 +8,7 @@ import { pricing } from "@/lib/content";
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-24 md:py-32 bg-(--color-bg)">
+    <section id="pricing" className="py-24 md:py-32 bg-(--color-bg-raised)">
       <Container className="flex flex-col gap-16">
         <SectionHeading eyebrow={pricing.eyebrow} headline={pricing.headline} align="center" />
 

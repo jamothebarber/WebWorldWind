@@ -29,7 +29,7 @@ const ICONS: Record<string, LucideIcon> = {
 
 export function CapabilitiesSection() {
   return (
-    <section id="capabilities" className="relative bg-(--color-bg) py-24 md:py-32">
+    <section id="capabilities" className="relative bg-(--color-bg-raised) py-24 md:py-32">
       <Container className="relative">
         <SectionHeading
           eyebrow={capabilities.eyebrow}

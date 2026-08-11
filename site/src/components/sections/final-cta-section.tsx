@@ -23,7 +23,7 @@ const item: Variants = {
 
 export function FinalCtaSection() {
   return (
-    <section id="book" className="relative overflow-hidden bg-(--color-bg-raised) py-24 md:py-32">
+    <section id="book" className="relative overflow-hidden bg-(--color-bg) py-24 md:py-32">
       {/* Ambient glow backdrop — callback to hero's voice motif, bracketing the section */}
       <div
         aria-hidden

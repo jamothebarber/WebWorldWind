@@ -10,7 +10,7 @@ export function HowItWorksSection() {
   return (
     <section
       id="how-it-works"
-      className="relative overflow-hidden bg-(--color-bg-raised) py-24 md:py-32"
+      className="relative overflow-hidden bg-(--color-bg) py-24 md:py-32"
     >
       <div
         aria-hidden

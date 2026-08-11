@@ -58,7 +58,7 @@ export function TestimonialsSection() {
   const active = quotes[index];
 
   return (
-    <section className="relative overflow-hidden bg-(--color-bg-raised) py-24 md:py-32">
+    <section className="relative overflow-hidden bg-(--color-bg) py-24 md:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 opacity-40"

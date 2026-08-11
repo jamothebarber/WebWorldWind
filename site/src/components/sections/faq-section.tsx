@@ -77,7 +77,7 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-(--color-bg) py-24 md:py-32">
+    <section id="faq" className="bg-(--color-bg-raised) py-24 md:py-32">
       <Container className="flex flex-col gap-14">
         <SectionHeading eyebrow={faq.eyebrow} headline={faq.headline} align="center" />
 
