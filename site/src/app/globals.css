@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Handled — Design System
+   Dark-first, single-accent, motion-forward. Every section should draw
+   colors/type/spacing/motion from these tokens rather than one-off values.
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --color-bg: #08080b;
+  --color-bg-raised: #0e0e13;
+  --color-surface: #131318;
+  --color-surface-2: #191920;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+
+  /* Text */
+  --color-fg: #f5f5f7;
+  --color-fg-muted: #a3a3ae;
+  --color-fg-subtle: #6b6b76;
+
+  /* Accent — electric indigo, the one color that gets to be loud */
+  --color-accent: #6e56f8;
+  --color-accent-2: #8b7cff;
+  --color-accent-soft: rgba(110, 86, 248, 0.14);
+  --color-accent-border: rgba(110, 86, 248, 0.4);
+
+  /* Voice motif — indigo -> cyan gradient reused across audio/AI moments */
+  --gradient-voice: linear-gradient(135deg, #6e56f8 0%, #8b7cff 45%, #4fd1ff 100%);
+  --gradient-radial-glow: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(110, 86, 248, 0.35) 0%,
+    rgba(110, 86, 248, 0) 100%
+  );
+
+  /* Status */
+  --color-positive: #3ddc97;
+  --color-warning: #f7b955;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-base: 320ms;
+  --duration-slow: 620ms;
+
+  /* Layout */
+  --container-max: 1200px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-raised: var(--color-bg-raised);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-border-default: var(--color-border);
+  --color-fg: var(--color-fg);
+  --color-fg-muted: var(--color-fg-muted);
+  --color-fg-subtle: var(--color-fg-subtle);
+  --color-accent: var(--color-accent);
+  --color-accent-2: var(--color-accent-2);
+  --color-positive: var(--color-positive);
+  --color-warning: var(--color-warning);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  color-scheme: dark;
+  background: var(--color-bg);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* Fluid type scale — clamp() so headlines scale smoothly instead of jumping
+   at breakpoints. Use these via the `text-display-*` / `text-h*` utilities
+   below rather than raw Tailwind text-[..] one-offs, to keep the whole site
+   on one scale. */
+.text-display-1 {
+  font-size: clamp(2.75rem, 2rem + 3.2vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+.text-display-2 {
+  font-size: clamp(2.25rem, 1.7rem + 2.4vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.text-h1 {
+  font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.text-h2 {
+  font-size: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+.text-body-lg {
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.container-max {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 640px) {
+  .container-max {
+    padding-inline: 2rem;
+  }
+}
+
+/* Reusable surface treatments */
+.glass-panel {
+  background: color-mix(in srgb, var(--color-surface) 70%, transparent);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--color-border);
+}
+
+.text-gradient-voice {
+  background: var(--gradient-voice);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grain-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visibility — never suppressed, styled to match the accent */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
